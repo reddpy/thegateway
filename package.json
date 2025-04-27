@@ -7,7 +7,11 @@
     "frontend": "cd client-web && pnpm run dev",
     "backend": "cd server && pnpm run dev",
     "app": "concurrently \"pnpm run frontend\" \"pnpm run backend\"",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "docker-compose build",
+    "start": "docker-compose up",
+    "db:ide": "cd server && npx drizzle-kit studio",
+    "db:create-migration": "cd server && npx drizzle-kit generate",
+    "db:migrate": "cd server && npx drizzle-kit migrate"
   },
   "keywords": [],
   "author": "",
