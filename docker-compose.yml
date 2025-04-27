@@ -1,0 +1,22 @@
+services:
+  backend:
+    build:
+      context: ./server
+    ports:
+      - 3001:3001
+    volumes:
+      - ./server:/server-backend
+      - /server-backend/node_modules
+
+  web_frontend:
+    build:
+      context: ./client-web
+    ports:
+      - 3000:3000
+    volumes:
+      - ./client-web:/client-frontend
+      - /client-frontend/node_modules
+      - /client-frontend/.next
+    depends_on:
+      - backend
+  
