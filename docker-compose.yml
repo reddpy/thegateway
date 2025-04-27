@@ -19,4 +19,17 @@ services:
       - /client-frontend/.next
     depends_on:
       - backend
-  
+
+  database:
+    image: postgres
+    restart: always
+    shm_size: 128mb
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+    env_file:
+      - ./.env
+
+volumes:
+  db_data:
