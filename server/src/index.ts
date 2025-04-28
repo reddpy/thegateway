@@ -7,7 +7,7 @@ app.get("/", (c) => {
 });
 
 app.get("/health", (c) => {
-  return c.json({ status: "ok" });
+  return c.json({ status: "ok!" });
 });
 
 const port = parseInt(process.env.PORT || "8080");
