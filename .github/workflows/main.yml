@@ -14,6 +14,12 @@ jobs:
     # Only run this job if the PR was merged (not just closed without merging)
     if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      deployments: write
+      pull-requests: write
+      statuses: write
+      
     defaults:
       run:
         working-directory: ./client-web  # Set the working directory to web-client
