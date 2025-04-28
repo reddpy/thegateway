@@ -18,6 +18,22 @@ jobs:
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
+
+      # Setup Bun environment
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: latest
+      
+      # Install dependencies
+      - name: Install dependencies
+        run: bun install
+      
+      # Run database migrations
+      - name: Run database migrations
+        run: bunx drizzle-kit migrate
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
       
       # Setup Fly.io CLI
       - name: Setup Flyctl
