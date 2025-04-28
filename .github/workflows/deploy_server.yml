@@ -1,0 +1,48 @@
+name: Deploy Backend
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'server/**'  # Only trigger when changes are made to the server directory
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./server  # Set working directory to server folder
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      
+      # Set up Bun runtime environment
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: latest
+      
+      # Install dependencies
+      - name: Install dependencies
+        run: bun install
+      
+      # Optional: Run tests
+      - name: Run tests
+        run: bun test
+        continue-on-error: false  # Optional: set to false if you want workflow to fail when tests fail
+      
+      # Build your application if needed
+      - name: Build
+        run: bun run build
+      
+      # Deploy to a chosen platform - Choose one of the methods below
+      
+      # OPTION 1: Deploy to Fly.io
+      - name: Deploy to Fly.io
+        uses: superfly/flyctl-actions/setup-flyctl@master
+        if: false  # Set to true to enable this step
+      - run: flyctl deploy --remote-only
+        if: false  # Set to true to enable this step
+        env:
+          FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}

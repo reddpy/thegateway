@@ -4,10 +4,16 @@ WORKDIR /server-backend
 
 COPY package*.json ./
 
-RUN bun install
+RUN bun install --production
 
 COPY . .
 
-EXPOSE 3001
+# Set environment variables
+ENV PORT=8080
+ENV NODE_ENV=production
 
-CMD ["bun", "run", "--hot", "./src/index.ts"]
+# Expose the port that Fly.io expects
+EXPOSE 8080
+
+# Start the application in production mode
+CMD ["bun", "run", "./src/index.ts"]
