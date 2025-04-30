@@ -4,16 +4,17 @@ WORKDIR /server-backend
 
 COPY package*.json ./
 
-RUN bun install --production
+RUN bun install
 
 COPY . .
 
 # Set environment variables
 ENV PORT=8080
-ENV NODE_ENV=production
 
 # Expose the port that Fly.io expects
 EXPOSE 8080
 
-# Start the application in production mode
-CMD ["bun", "run", "./src/index.ts"]
+COPY docker-entrypoint.sh /usr/local/bin/
+RUN chmod +x /usr/local/bin/docker-entrypoint.sh
+
+ENTRYPOINT [ "docker-entrypoint.sh" ]

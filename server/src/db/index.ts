@@ -1,7 +1,6 @@
 import "dotenv/config";
 import { drizzle } from "drizzle-orm/node-postgres";
-import { postgres } from "bun";
-
+import { Pool } from "pg";
 import * as schema from "./schema";
 
 // Check if DATABASE_URL is defined
@@ -12,11 +11,11 @@ if (!process.env.DATABASE_URL) {
 
 // Create postgres connection with pool
 const connectionString = process.env.DATABASE_URL;
-const client = postgres(connectionString, {
+const client = new Pool({
+  connectionString,
   max: 10, // Maximum number of connections in the pool
-  idle_timeout: 20, // Max seconds a connection can be idle before being removed
-  connect_timeout: 10, // Max seconds to wait for a connection
-  prepare: false, // PostgresJS will auto-prepare statements (recommended for Neon)
+  idleTimeoutMillis: 20000, // Max milliseconds a connection can be idle before being removed
+  connectionTimeoutMillis: 10000, // Max milliseconds to wait for a connection
 });
 
 export const db = drizzle(client, { schema });
