@@ -1,7 +1,10 @@
 {
   "name": "server",
   "scripts": {
-    "dev": "bun run --hot src/index.ts"
+    "dev": "bun run --hot src/index.ts",
+    "generate": "bunx drizzle-kit generate", 
+    "migrate:local": "bunx drizzle-kit migrate --config=drizzle-dev.config.ts",
+    "studio:local": "bunx drizzle-kit studio --config=drizzle-dev.config.ts"
   },
   "dependencies": {
     "@hono/node-server": "^1.14.1",
