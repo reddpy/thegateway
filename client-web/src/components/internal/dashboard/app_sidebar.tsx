@@ -31,17 +31,17 @@ export function AppSidebar() {
     },
     {
       title: "Agents",
-      url: "#",
+      url: "/dashboard/agent",
       icon: Bot,
     },
     {
       title: "Reports",
-      url: "#",
+      url: "/dashboard/report",
       icon: FileText,
     },
     {
       title: "Alerts",
-      url: "#",
+      url: "/dashboard/alert",
       icon: TriangleAlertIcon,
     },
   ];
@@ -49,7 +49,7 @@ export function AppSidebar() {
   const setting_items = [
     {
       title: "Settings",
-      url: "#",
+      url: "/dashboard/setting",
       icon: Settings,
     },
 
