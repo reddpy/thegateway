@@ -12,7 +12,14 @@ import {
 } from "@/components/ui/sidebar";
 import Image from "next/image";
 
-import { LayoutDashboard, LogOut, Settings } from "lucide-react";
+import {
+  Bot,
+  FileText,
+  LayoutDashboard,
+  LogOut,
+  Settings,
+  TriangleAlertIcon,
+} from "lucide-react";
 
 export function AppSidebar() {
   // Menu items.
@@ -21,6 +28,21 @@ export function AppSidebar() {
       title: "Dashboard",
       url: "/dashboard",
       icon: LayoutDashboard,
+    },
+    {
+      title: "Agents",
+      url: "#",
+      icon: Bot,
+    },
+    {
+      title: "Reports",
+      url: "#",
+      icon: FileText,
+    },
+    {
+      title: "Alerts",
+      url: "#",
+      icon: TriangleAlertIcon,
     },
   ];
 
@@ -56,12 +78,9 @@ export function AppSidebar() {
               {main_items.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild>
-                    <a
-                      href={item.url}
-                      className="flex items-center justify-center"
-                    >
-                      <item.icon />
-                      <span className="text-lg">{item.title}</span>
+                    <a href={item.url}>
+                      <item.icon className="ml-2" />
+                      <span className="text-lg ml-8">{item.title}</span>
                     </a>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
@@ -76,9 +95,9 @@ export function AppSidebar() {
           {setting_items.map((item) => (
             <SidebarMenuItem key={item.title}>
               <SidebarMenuButton asChild>
-                <a href={item.url} className="flex items-center justify-center">
-                  <item.icon />
-                  <span className="text-lg">{item.title}</span>
+                <a href={item.url}>
+                  <item.icon className="ml-2" />
+                  <span className="text-lg ml-8">{item.title}</span>
                 </a>
               </SidebarMenuButton>
             </SidebarMenuItem>
