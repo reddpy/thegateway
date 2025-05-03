@@ -1,7 +1,11 @@
+import ComingSoon from "@/components/internal/dashboard/coming_soon_card";
+
  
 export default async function Page() {
+  const page_title = "reports";
+
  
   return (
-    <p>report page placeholder</p>
+    <ComingSoon pageName={page_title}/>
   )
 }

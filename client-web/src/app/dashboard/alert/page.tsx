@@ -1,7 +1,9 @@
- 
+ import ComingSoon from "@/components/internal/dashboard/coming_soon_card"
+
 export default async function Page() {
+  const page_title = "alerts";
  
   return (
-    <p>alert page placeholder</p>
+    <ComingSoon pageName={page_title}/>
   )
 }
