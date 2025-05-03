@@ -1,11 +1,13 @@
-"use client"
- 
-import { AuthCard } from "@daveyplate/better-auth-ui"
- 
+"use client";
+
+import AuthNavbar from "@/components/internal/navbar-auth";
+import { AuthCard } from "@daveyplate/better-auth-ui";
+
 export function AuthView({ pathname }: { pathname: string }) {
-    return (
-        <main className="flex flex-col grow p-4 items-center justify-center">
-            <AuthCard pathname={pathname} />
-        </main>
-    )
+  return (
+    <main className="flex flex-col items-center justify-center min-h-screen w-full">
+      <AuthNavbar />
+      <AuthCard pathname={pathname} />
+    </main>
+  );
 }

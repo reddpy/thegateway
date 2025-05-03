@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const HomePageCTA = () => {
   return (
     <div className="flex flex-col items-center w-full">
@@ -6,28 +8,15 @@ const HomePageCTA = () => {
           <div className="flex flex-col lg:flex-row">
             <div className="w-full lg:w-3/5 p-8 lg:p-12">
               <div className="flex items-center mb-6">
-                <svg
-                  className="w-10 h-10 text-white mr-3"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4Z"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                  <path
-                    d="M12 8V12L14 14"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-                <h3 className="text-white text-2xl font-bold">360° AI Ops</h3>
+                <Image
+                  src="/oneocular-svg/ISO W.svg"
+                  height={20}
+                  width={40}
+                  alt="OneOcular"
+                />
+                <h3 className="ml-2 text-white text-2xl font-bold">
+                  360° View of your AI
+                </h3>
               </div>
 
               <h2 className="text-white text-4xl font-extrabold mb-4 leading-tight">
