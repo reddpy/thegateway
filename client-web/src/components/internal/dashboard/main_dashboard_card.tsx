@@ -22,7 +22,7 @@ const DashboardCard: React.FC<DashboardCardInterface> = ({
   IconColor,
 }) => {
   return (
-    <Card className="text-center overflow-hidden shadow-lg border-2 border-[#4169e2]">
+    <Card className="text-center overflow-hidden shadow-lg border-1 border-[#4169e2]">
       <CardHeader>
         <div className="flex flex-row items-center justify-between">
           <CardTitle>{Title}</CardTitle>

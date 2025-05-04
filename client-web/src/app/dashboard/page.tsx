@@ -1,4 +1,5 @@
 import DashboardCard from "@/components/internal/dashboard/main_dashboard_card";
+import SecurityInsightsCard from "@/components/internal/dashboard/security_insights_card";
 import { Database, EarthLock, Plug, SearchCode } from "lucide-react";
 
 export default async function Page() {
@@ -33,6 +34,9 @@ export default async function Page() {
           CardIcon={EarthLock}
           IconColor="bg-red-200"
         />
+      </div>
+      <div className="mt-6">
+        <SecurityInsightsCard />
       </div>
     </div>
   );
