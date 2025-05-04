@@ -10,7 +10,6 @@ import { Button } from "@/components/ui/button";
 import { AlertTriangleIcon, MoveRight } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 
-AlertTriangleIcon;
 
 const SecurityInsightsCard = () => {
   return (
@@ -23,7 +22,7 @@ const SecurityInsightsCard = () => {
         </Button>
       </CardHeader>
       <hr />
-      <CardContent className="rounded-xl p-2">
+      <CardContent>
         <div id="security_alert1" className="flex flex-row justify-between p-4">
           <div className="h-10 w-10 bg-red-300 rounded-xl mt-1">
             <AlertTriangleIcon className="mt-2 ml-2" color="red" />

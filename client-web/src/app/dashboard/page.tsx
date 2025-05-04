@@ -1,4 +1,5 @@
 import DashboardCard from "@/components/internal/dashboard/main_dashboard_card";
+import RecentAgentsCard from "@/components/internal/dashboard/recent_agents_cards";
 import SecurityInsightsCard from "@/components/internal/dashboard/security_insights_card";
 import { Database, EarthLock, Plug, SearchCode } from "lucide-react";
 
@@ -35,8 +36,10 @@ export default async function Page() {
           IconColor="bg-red-200"
         />
       </div>
-      <div className="mt-6">
+
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-6">
         <SecurityInsightsCard />
+        <RecentAgentsCard />
       </div>
     </div>
   );
