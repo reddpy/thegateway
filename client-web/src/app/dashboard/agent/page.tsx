@@ -1,6 +1,7 @@
+import MonitorNewAgentBtn from "@/components/internal/agent/monitor_new_agent_btn";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { FilterIcon, PackagePlus } from "lucide-react";
+import { FilterIcon } from "lucide-react";
 
 export default async function Page() {
   return (
@@ -15,10 +16,7 @@ export default async function Page() {
           <FilterIcon />
           Filter
         </Button>
-        <Button>
-          <PackagePlus />
-          Monitor New Agent
-        </Button>
+        <MonitorNewAgentBtn />
       </div>
     </div>
   );
