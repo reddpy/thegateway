@@ -10,7 +10,7 @@ const ComingSoon: React.FC<ComingSoonProps> = ({ pageName }) => {
 
   return (
     <div className="p-6">
-      <h1 className="text-2xl font-bold text-gray-800 mb-6">{pageName}</h1>
+      <h1 className="text-2xl text-gray-800 mb-6">{pageName}</h1>
 
       <div className="bg-white rounded-lg shadow p-8 text-center">
         <div className="mb-4">
