@@ -1,52 +1,24 @@
-"use client";
+interface Agent {
+  id: string | number; // Adjust based on your actual data structure
+  agent_name: string;
+  agent_description: string;
+  agent_type: string;
+  // Add other properties that exist on your agent object
+}
 
-import { useEffect, useState } from "react";
+// Fix 1: Define proper props interface
+interface AgentListProps {
+  agentsParent: Agent[];
+}
 
-const fetchAgents = async (setAgents: any, setIsLoading: any) => {
-  try {
-    const response = await fetch("http://localhost:3001/get-agents", {
-      credentials: "include",
-    });
 
-    if (!response.ok) {
-      throw new Error(`Response status: ${response.status}`);
-    }
-
-    const data = await response.json();
-    setAgents(data);
-    setIsLoading(false);
-  } catch (error: unknown) {
-    if (error instanceof Error) {
-      console.log(error.message);
-    } else {
-      console.log("An unknown error occurred");
-    }
-  }
-};
-
-const AgentList = (agentParent) => {
-  const [agents, setAgents] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    fetchAgents(setAgents, setIsLoading);
-  }, []);
-
-  if (isLoading) return <div>Loading agents...</div>;
-  console.log(agents);
-
+const AgentList = ({ agentsParent }: AgentListProps) => {
+  console.log(agentsParent);
   return (
     <div>
-      {/* Render your agents here */}
-      {agents.length === 0 ? (
-        <div>No agents found</div>
-      ) : (
-        <ul>
-          {agents.map((agent) => (
-            <li key={agent.id}>{agent.agent_name}</li>
-          ))}
-        </ul>
-      )}
+      {agentsParent.map((agent: Agent) => (
+        <p key={agent.id}>{agent.agent_name}</p>
+      ))}
     </div>
   );
 };

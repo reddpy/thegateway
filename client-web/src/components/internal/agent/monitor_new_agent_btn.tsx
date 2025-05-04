@@ -63,10 +63,12 @@ const formSchema = z.object({
     }),
 });
 
-const MonitorNewAgentBtn = () => {
-  const [open, isOpen] = useState(false);
+interface MonitorNewAgentBtnProps {
+  onAgentAdded: () => void; // Function to call after successful submission
+}
 
-  const router = useRouter();
+const MonitorNewAgentBtn = ({ onAgentAdded }: MonitorNewAgentBtnProps) => {
+  const [open, isOpen] = useState(false);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -96,7 +98,7 @@ const MonitorNewAgentBtn = () => {
         if (json.status == 200) {
           isOpen(false);
           form.reset();
-
+          onAgentAdded();
           toast("New agent has been added");
         }
       }

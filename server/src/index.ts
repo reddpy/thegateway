@@ -66,10 +66,8 @@ app.get("/get-agents", async (c) => {
       where: eq(agents.userId, user.id),
     });
 
-    console.log("Agent results", agent_results);
     return c.json(agent_results);
   } catch (error) {
-    console.log("FAILURE", error);
     return c.json({ status: "error", message: "Failed to query agents" }, 500);
   }
 });
@@ -82,7 +80,6 @@ app.post("/new-agent", async (c) => {
   try {
     await db.insert(agents).values({ ...body, userId: user?.id });
   } catch (error) {
-    console.log(error);
     return c.json({ status: "error inserting!" });
   }
 
