@@ -16,6 +16,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "OneOcular AI",
   description: "360 AI OPs & Compliance",
+  icons:{
+    icon: "/oneocular-svg/website_icon.svg"
+  }
 };
 
 export default function RootLayout({
