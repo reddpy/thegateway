@@ -21,7 +21,7 @@ const ComingSoon: React.FC<ComingSoonProps> = ({ pageName }) => {
             {pageName} Coming Soon
           </h2>
           <p className="text-gray-600 max-w-md mx-auto">
-            We're working on building this feature. Check back in a few weeks!
+            We`&apos;`re working on building this feature. Check back in a few weeks!
           </p>
         </div>
       </div>
