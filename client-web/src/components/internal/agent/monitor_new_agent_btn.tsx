@@ -44,6 +44,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { Textarea } from "@/components/ui/textarea";
+import { useState } from "react";
 
 const formSchema = z.object({
   agent_name: z.string().min(5, {
@@ -62,6 +63,8 @@ const formSchema = z.object({
 });
 
 const MonitorNewAgentBtn = () => {
+  const [open, isOpen] = useState(false);
+
   // 1. Define your form.
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -77,16 +80,23 @@ const MonitorNewAgentBtn = () => {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
     console.log(values);
+    isOpen(false);
+    form.reset();
   }
 
   function onCancel() {
     form.reset();
+    isOpen(false);
   }
 
   return (
-    <AlertDialog>
+    <AlertDialog open={open}>
       <AlertDialogTrigger asChild>
-        <Button>
+        <Button
+          onClick={() => {
+            isOpen(true);
+          }}
+        >
           <PackagePlus />
           Monitor New Agent
         </Button>
