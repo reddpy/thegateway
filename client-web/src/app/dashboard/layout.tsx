@@ -11,7 +11,7 @@ export default function DashboardLayout({
       <AppSidebar />
       <main className="flex w-full">
         <SidebarTrigger />
-        <div className="flex-1 mx-2 mt-2 border-2 p-1 border-[#4169E2] rounded-xl h-[98%] shadow-xl">
+        <div className="bg-zinc-50 flex-1 mx-2 mt-2 border-2 p-1 border-[#4169E2] rounded-xl h-[98%] shadow-xl">
           {children}
         </div>
       </main>
