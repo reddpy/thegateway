@@ -13,12 +13,12 @@ import {
 } from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
 import {
-  PackagePlus,
-  MessagesSquare,
-  Workflow,
   BrainCircuit,
   ChartNetwork,
   Columns3Cog,
+  MessagesSquare,
+  PackagePlus,
+  Workflow,
 } from "lucide-react";
 
 import {
@@ -40,11 +40,12 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import { z } from "zod";
 import { Textarea } from "@/components/ui/textarea";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { toast } from "sonner";
+import { z } from "zod";
 
 const formSchema = z.object({
   agent_name: z.string().min(5, {
@@ -65,7 +66,8 @@ const formSchema = z.object({
 const MonitorNewAgentBtn = () => {
   const [open, isOpen] = useState(false);
 
-  // 1. Define your form.
+  const router = useRouter();
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -75,13 +77,36 @@ const MonitorNewAgentBtn = () => {
     },
   });
 
-  // 2. Define a submit handler.
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    console.log(values);
-    isOpen(false);
-    form.reset();
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    const url = "http://localhost:3001/new-agent";
+
+    try {
+      const response = await fetch(url, {
+        method: "POST",
+        body: JSON.stringify(values),
+        credentials: "include",
+      });
+
+      if (!response.ok) {
+        throw new Error(`Response status: ${response.status}`);
+      }
+
+      if (response.ok) {
+        const json = await response.json();
+        if (json.status == 200) {
+          isOpen(false);
+          form.reset();
+
+          toast("New agent has been added");
+        }
+      }
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        console.log(error.message);
+      } else {
+        console.log("An unknown error occurred");
+      }
+    }
   }
 
   function onCancel() {

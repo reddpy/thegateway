@@ -2,6 +2,7 @@ import MonitorNewAgentBtn from "@/components/internal/agent/monitor_new_agent_bt
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { FilterIcon } from "lucide-react";
+import AgentList from "../../../components/internal/agent/agent_list";
 
 export default async function Page() {
   return (
@@ -17,6 +18,9 @@ export default async function Page() {
           Filter
         </Button>
         <MonitorNewAgentBtn />
+      </div>
+      <div className="mt-6">
+        <AgentList />
       </div>
     </div>
   );
