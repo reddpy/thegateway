@@ -1,3 +1,4 @@
+"use client";
 import {
   Sidebar,
   SidebarContent,
@@ -21,28 +22,36 @@ import {
   TriangleAlertIcon,
 } from "lucide-react";
 
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+
 export function AppSidebar() {
-  // Menu items.
+  const pathname = usePathname();
+
   const main_items = [
     {
       title: "Dashboard",
       url: "/dashboard",
       icon: LayoutDashboard,
+      isCurrent: pathname == "/dashboard",
     },
     {
       title: "Agents",
       url: "/dashboard/agent",
       icon: Bot,
+      isCurrent: pathname == "/dashboard/agent",
     },
     {
       title: "Reports",
       url: "/dashboard/report",
       icon: FileText,
+      isCurrent: pathname == "/dashboard/report",
     },
     {
       title: "Alerts",
       url: "/dashboard/alert",
       icon: TriangleAlertIcon,
+      isCurrent: pathname == "/dashboard/alert",
     },
   ];
 
@@ -51,6 +60,7 @@ export function AppSidebar() {
       title: "Settings",
       url: "/dashboard/setting",
       icon: Settings,
+      isCurrent: pathname == "/dashboard/setting",
     },
 
     {
@@ -61,7 +71,7 @@ export function AppSidebar() {
   ];
 
   return (
-    <Sidebar>
+    <Sidebar variant="floating">
       <SidebarHeader className="mx-auto mt-2">
         <Image
           src="/oneocular-svg/LOGO B.svg"
@@ -77,11 +87,11 @@ export function AppSidebar() {
             <SidebarMenu>
               {main_items.map((item) => (
                 <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild>
-                    <a href={item.url}>
+                  <SidebarMenuButton asChild isActive={item.isCurrent}>
+                    <Link href={item.url}>
                       <item.icon className="ml-2" />
                       <span className="text-lg ml-8">{item.title}</span>
-                    </a>
+                    </Link>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}
@@ -94,11 +104,11 @@ export function AppSidebar() {
         <SidebarMenu>
           {setting_items.map((item) => (
             <SidebarMenuItem key={item.title}>
-              <SidebarMenuButton asChild>
-                <a href={item.url}>
+              <SidebarMenuButton asChild isActive={item.isCurrent}>
+                <Link href={item.url}>
                   <item.icon className="ml-2" />
                   <span className="text-lg ml-8">{item.title}</span>
-                </a>
+                </Link>
               </SidebarMenuButton>
             </SidebarMenuItem>
           ))}
