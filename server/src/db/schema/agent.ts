@@ -1,4 +1,4 @@
-import { pgTable, varchar, text, serial } from "drizzle-orm/pg-core";
+import { pgTable, varchar, text, serial, boolean } from "drizzle-orm/pg-core";
 import { relations } from "drizzle-orm";
 import { user } from "./auth-schema";
 
@@ -7,6 +7,7 @@ export const agents = pgTable("agent", {
   agent_type: varchar().notNull(),
   agent_name: varchar().notNull(),
   agent_description: text().notNull(),
+  active: boolean().default(false),
   userId: text("userId"),
 });
 

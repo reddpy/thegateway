@@ -2,7 +2,7 @@
   "name": "server",
   "scripts": {
     "dev": "bun run --hot src/index.ts",
-    "generate": "bunx drizzle-kit generate", 
+    "generate": "bunx drizzle-kit generate --config=drizzle-dev.config.ts", 
     "migrate:local": "bunx drizzle-kit migrate --config=drizzle-dev.config.ts",
     "studio:local": "bunx drizzle-kit studio --config=drizzle-dev.config.ts",
     "migrate:prod": "bunx drizzle-kit migrate --config=drizzle-prod.config.ts"
