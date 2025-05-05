@@ -35,6 +35,8 @@ app.use(
   }
 );
 
+app.on(["POST", "GET"], "/api/auth/**", (c) => auth.handler(c.req.raw));
+
 app.get("/", (c) => {
   return c.text("Hello Hono");
 });
@@ -51,7 +53,6 @@ app.get("/session", async (c) => {
   });
 });
 
-app.on(["POST", "GET"], "/api/auth/**", (c) => auth.handler(c.req.raw));
 
 app.get("/get-agents", async (c) => {
   const user = c.get("user");
