@@ -29,12 +29,6 @@ jobs:
       - name: Install dependencies
         run: bun install
       
-      # Run database migrations
-      - name: Run database migrations
-        run: bunx drizzle-kit migrate
-        env:
-          DATABASE_URL: ${{ secrets.DATABASE_URL }}
-      
       # Setup Fly.io CLI
       - name: Setup Flyctl
         uses: superfly/flyctl-actions/setup-flyctl@master
