@@ -14,7 +14,7 @@ const app = new Hono<{
 app.use(
   "*",
   cors({
-    origin: ["http://localhost:3000"], // Next.js frontend origin
+    origin: ["http://localhost:3000", "https://thegateway.vercel.app"], // Next.js frontend origin
     allowMethods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowHeaders: ["Content-Type", "Authorization"],
     credentials: true,
