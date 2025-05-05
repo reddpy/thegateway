@@ -39,19 +39,19 @@ export function AppSidebar() {
       title: "Agents",
       url: "/dashboard/agent",
       icon: Bot,
-      isCurrent: pathname == "/dashboard/agent",
+      isCurrent: pathname.includes("/dashboard/agent"),
     },
     {
       title: "Reports",
       url: "/dashboard/report",
       icon: FileText,
-      isCurrent: pathname == "/dashboard/report",
+      isCurrent: pathname.includes("/dashboard/report"),
     },
     {
       title: "Alerts",
       url: "/dashboard/alert",
       icon: TriangleAlertIcon,
-      isCurrent: pathname == "/dashboard/alert",
+      isCurrent: pathname.includes("/dashboard/alert"),
     },
   ];
 
@@ -60,9 +60,8 @@ export function AppSidebar() {
       title: "Settings",
       url: "/dashboard/setting",
       icon: Settings,
-      isCurrent: pathname == "/dashboard/setting",
+      isCurrent: pathname.includes("/dashboard/setting"),
     },
-
     {
       title: "Log-Out",
       url: "/auth/sign-out",
