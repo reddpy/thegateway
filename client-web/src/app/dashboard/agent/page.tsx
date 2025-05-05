@@ -13,7 +13,8 @@ const fetchAgents = async (
   setIsLoading: React.Dispatch<React.SetStateAction<boolean>>
 ) => {
   try {
-    const response = await fetch("http://localhost:3001/get-agents", {
+    const url = process.env.NEXT_PUBLIC_SERVER_URL+"/get-agents";
+    const response = await fetch(url, {
       credentials: "include",
     });
 
