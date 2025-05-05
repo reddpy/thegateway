@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/card";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Activity, Bot, ChevronRight, Code, Cpu, FileText } from "lucide-react";
+import { redirect } from "next/navigation";
 import React, { useState } from "react";
 
 interface Agent {
@@ -43,7 +44,7 @@ const AgentList = ({ agentsParent }: AgentListProps) => {
   // Handle card click
   const handleCardClick = (id: string | number) => {
     setSelectedAgent(id);
-    console.log(`Agent ${id} selected`);
+    redirect(`/dashboard/agent/${id}/details`);
   };
 
   // If no agents, display a message
