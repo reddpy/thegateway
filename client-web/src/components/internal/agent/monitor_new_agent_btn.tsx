@@ -80,7 +80,7 @@ const MonitorNewAgentBtn = ({ onAgentAdded }: MonitorNewAgentBtnProps) => {
   });
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    const url = "http://localhost:3001/new-agent";
+    const url = process.env.NEXT_PUBLIC_SERVER_URL+"/new-agent";
 
     try {
       const response = await fetch(url, {
