@@ -11,10 +11,12 @@ const app = new Hono<{
   };
 }>();
 
+const client_web_url = process.env.CLIENT_WEB_URL || ""; // Next.js frontend origin
+
 app.use(
   "*",
   cors({
-    origin: ["http://localhost:3000", "https://thegateway.vercel.app"], // Next.js frontend origin
+    origin: ["http://localhost:3000", client_web_url], 
     allowMethods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowHeaders: ["Content-Type", "Authorization"],
     credentials: true,
