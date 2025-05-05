@@ -8,7 +8,10 @@ import AgentList from "../../../components/internal/agent/agent_list";
 
 import { useState, useEffect } from "react";
 
-const fetchAgents = async (setAgents: any, setIsLoading: any) => {
+const fetchAgents = async (
+  setAgents: React.Dispatch<React.SetStateAction<Agent[]>>,
+  setIsLoading: React.Dispatch<React.SetStateAction<boolean>>
+) => {
   try {
     const response = await fetch("http://localhost:3001/get-agents", {
       credentials: "include",
@@ -40,7 +43,7 @@ interface Agent {
 
 export default function Page() {
   const [agents, setAgents] = useState<Agent[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const [refresh, setRefresh] = useState(0);
 
   useEffect(() => {
@@ -63,10 +66,10 @@ export default function Page() {
           <FilterIcon />
           Filter
         </Button>
-        <MonitorNewAgentBtn onAgentAdded={refreshAgents}/>
+        <MonitorNewAgentBtn onAgentAdded={refreshAgents} />
       </div>
       <div className="mt-6">
-        <AgentList agentsParent={agents} />
+        {isLoading ? <p>loading</p> : <AgentList agentsParent={agents} />}
       </div>
     </div>
   );
